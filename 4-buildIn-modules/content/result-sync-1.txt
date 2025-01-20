@@ -1,0 +1,5 @@
+Hello everyone this is file, which is created by writeFileSync function with append. The content of this file is: "Hello, World!!!"
+"This is the first text file", "Welcome to node js"
+"This is the second text file"Hello everyone this is file, which is created by writeFileSync function with append. The content of this file is: "Hello, World!!!"
+"This is the first text file", "Welcome to node js"
+"This is the second text file"
