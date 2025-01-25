@@ -42,3 +42,8 @@ module.exports['var3'] = 'This is the third variable.';
 
 console.log(module);
 */
+
+// const obj = {}; 
+
+// obj.foo = "helo";
+// console.log(obj);

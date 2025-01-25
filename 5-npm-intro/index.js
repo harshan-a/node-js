@@ -12,8 +12,10 @@
 // --> manual approach (create package.json in the root, and create the properties etc)
 // --> command: npm init 
 // --> command: npm init -y (for default properties)
-console.log("start");
 
+// create dev dependencies -- npm install <name> -D (or) npm install <name> --save-dev
+console.log("start");
+console.log("Hello, World!");
 
 
 

@@ -20,6 +20,16 @@ console.log(ariOp.divide(20, 20));
 */
 
 
-const altMod = require("./alternative-module");
+// const altMod = require("./alternative-module");
 
-console.log(altMod);
+// console.log(altMod);
+
+// const foo = require("./arithmetic-operations");
+
+// foo.add(10, 19);
+// console.log(foo.vari);
+
+import {add, sub} from "./alternative-module.js";
+console.log("file2");
+console.log(add(1, 56));
+console.log(sub(1, 56));
