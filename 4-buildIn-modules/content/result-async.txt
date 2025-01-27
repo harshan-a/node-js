@@ -1,3 +1,5 @@
-"Hello, World!!! This is the file created by writeFile function. Content: "Hello, World!!!"
-"This is the first text file", "Welcome to node js"
-"This is the second text file""
+This is Awesome: 
+"Hello, World!!!"
+"This is the first text file"
+"Welcome to node js"
+"This is the second text file"

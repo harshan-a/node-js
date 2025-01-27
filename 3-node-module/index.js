@@ -1,3 +1,5 @@
+// any one will be accepted either commonjs or ES6;
+
 
 /*
 const ariOp = require("./arithmetic-operations.js");
