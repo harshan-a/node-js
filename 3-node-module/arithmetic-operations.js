@@ -1,7 +1,8 @@
 console.log("file - arithmetic-operation.js was executed");
 
 function add(num1, num2) {
-  console.log(vari = 11);
+  console.log(vari = 11); // op: 11 and vari value can't change;
+  // console.log(this.vari = 11); // op: 11 and vari value change to 11;
   return num1 + num2;
 }
 
@@ -21,7 +22,7 @@ function divide(num1, num2) {
   return num1 / num2;
 }
 
-let vari = 10;
+let vari = 10; 
 
 module.exports = {
   add, sub, multiply, divide, vari

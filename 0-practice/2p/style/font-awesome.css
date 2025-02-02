@@ -1,0 +1,27 @@
+.fa {
+  font-size: 15px;
+  width: 1px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  color: #3B5998;
+}
+
+.fa-twitter {
+  color: #55ACEE;
+}
+
+.fa-linkedin {
+  color: #007bb5;
+}
+
+.fa-instagram {
+  color: #125688;
+}

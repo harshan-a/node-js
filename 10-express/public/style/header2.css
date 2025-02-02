@@ -1,0 +1,88 @@
+.header2,
+.header2 .top,
+.header2 .bottom,
+.header2 .top .left,
+.header2 .top .right,
+.header2 .bottom .first {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header2 {
+  flex-direction: column;
+  left: 0;
+  right: 0;
+  display: none;
+}
+
+.header2 .top {
+  min-width: 100%;
+  height: 50px;
+  justify-content: space-between;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  background: white;
+  z-index: 1000;
+}
+
+.header2 .top .left {
+  margin-left: 10px;
+}
+
+.header2 .top .right {
+  margin-right: 20px;
+}
+
+.header2 .top .right button {
+  cursor: pointer;
+  transition: transform 0.25s linear;
+}
+.header2 .top .right button.clicked {
+  transform: rotate(-90deg);
+}
+
+.header2 .bottom {
+  flex-direction: column;
+  min-width: 100%;
+  padding: 10px 0;
+  animation: slideFromTopToBottom 0.25s linear 1;
+  box-shadow: 0 0px 3px  rgba(0, 0, 0, 0.15);
+  z-index: 0;
+  display: none;
+}
+.header2 .bottom.on {
+  display: flex;
+}
+
+.header2 .bottom .first {
+  width: 100%;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+.header2 .bottom .first a {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  text-decoration: none;
+  color:rgba(0, 0, 0, 0.7)
+}
+.header2 .bottom .first a:hover {
+  color:rgba(0, 0, 0, 1);
+}
+.header2 .bottom .second {
+  width: 100%;
+  text-align: center;
+  padding-left: 10px;
+}
+.header2 .bottom .second a {
+  margin-right: 20px;
+}
+
+@keyframes slideFromTopToBottom {
+  0% {
+    transform:translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}

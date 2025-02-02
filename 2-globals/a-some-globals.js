@@ -6,5 +6,5 @@
 // module - info about current modules(file)
 // process - info about env where the program is being executed
 
-console.log("Directory:", __dirname);
+global.console.log("Directory:", __dirname);
 console.log("File:", __filename);
