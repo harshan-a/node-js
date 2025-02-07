@@ -1,0 +1,14 @@
+[
+  {
+    "category": "HTML",
+    "questions": ["Basic", "Tables", "Forms", "StructureOfHTML"]
+  },
+  {
+    "category": "CSS",
+    "questions": ["Basic", "Grid", "Flex", "Keyframes", "transition"]
+  },
+  {
+    "category": "JAVASCRIPT",
+    "questions": ["Basic", "Document object", "Javascript fundamentals"]
+  }
+]

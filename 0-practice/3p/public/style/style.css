@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: Poppins, serif;
+  margin: 0;
+  padding: 0;
+  color: rgba(95, 158, 160, 0.9);
+}
+
+body, main, main form, main div, .swap-btn, .swap-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+body {
+  min-height: 100vh;
+  background-color:cadetblue; 
+}
+
+main {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  flex-direction: column;
+  background-color: white;
+  row-gap: 25px;
+  padding: 15px;
+}
+
+main form {
+  flex-direction: column;
+  row-gap: 10px;
+  box-shadow: 0 0 7px rgba(95, 158, 160, 0.3);
+  padding: 15px;
+  padding-right: 22px;
+  background-color:rgb(95, 158, 160);
+  border-radius: 5px;
+}
+
+main form * {
+  color: white;
+  font-size: 17px;
+}
+
+main div {
+  flex-direction: column;
+  align-items: start;
+  row-gap: 6px;
+}
+
+main div input{
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  padding-left: 7px;
+  color: rgba(0, 0, 0, 0.9);
+  width: 100%;
+}
+
+main div label span {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+main form button {
+  border-radius: 5px;
+  border: none;
+  background-color:white;
+  padding: 5px 10px;
+  color: rgba(95, 158, 160, 0.9);
+}
+
+.swap-container {
+  flex-direction: row;
+  column-gap: 7px;
+  font-size: 17px;
+}
+
+
+.swap-btn {
+  border: none;
+  height: 20px;
+  width: 35px;
+  border-radius: 40%;
+  padding: 1px 3px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  justify-content: start;
+  background: white;
+}
+
+.swap-btn .swap{
+  color: rgba(95, 158, 160, 0.9);
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.swap-btn.signup {
+  justify-content: end;
+  background-color: rgba(0, 0, 0);
+}
+
+button:hover {
+  cursor: pointer;
+}
+span, h2{
+  pointer-events: none;
+}
+.opa {
+  opacity: 0.5
+}
+
+
+.error {
+  font-size: 10px;
+  color: brown;
+  display: none;
+}
+.errorOn {
+  display: initial;
+}
