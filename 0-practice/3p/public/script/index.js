@@ -18,14 +18,15 @@ function renderForm() {
           <input name="username" class="username" type="text" />
           <span class="user-not-found error">user not found ( signup please )</span>
         </div>
-        <div class="passward-container">
-          <label for="passward" type="passward">
-            Passward <span>*</span>
+        <div class="password-container">
+          <label for="password" type="password">
+            Password <span>*</span>
           </label>
-          <input name="passward" class="passward" type="passward" />
-          <span class="passward-incorrect error">passward incorrect</span>
+          <input name="password" class="password" type="password" />
+          <span class="password-incorrect error">password incorrect</span>
         </div>
         <button type="submit" class="submit-btn">Login</button>
+        <a class="forgot-password" href="/forgetpassword">Forget Password</a>
       </form>
 
       <div class="swap-container">
@@ -42,18 +43,18 @@ function renderForm() {
           <input name="username" class="username" type="text" />
           <span class="already-a-member error">already a member ( click login )</span>
         </div>
-        <div class="passward-container">
-          <label for="passward" type="passward">
-            Passward <span>*</span>
+        <div class="password-container">
+          <label for="password" type="password">
+            Password <span>*</span>
           </label>
-          <input name="passward" class="passward" type="passward" />
+          <input name="password" class="password" type="password" />
         </div>
-        <div class="consform-passward-container">
-          <label for="conform-passward" type="passward">
-            Conform Passward <span>*</span>
+        <div class="consform-password-container">
+          <label for="conform-password" type="password">
+            Conform password <span>*</span>
           </label>
-          <input name="conform-passward" class="conform-passward" type="passward" />
-          <span class="passward-not-match error">passward does not match</span>
+          <input name="conform-password" class="conform-password" type="password" />
+          <span class="password-not-match error">password does not match</span>
         </div>
         <button type="submit" class="submit-btn">
           ${status_code === "login" ? "Login" : "Signup"}
@@ -74,12 +75,12 @@ function renderForm() {
   swapBtn = document.querySelector(".swap-btn"),
   submitBtn = document.querySelector(".submit-btn"),
   usernameElem = document.querySelector(".username"),
-  passElem = document.querySelector(".passward"),
-  confPassElem = document.querySelector(".conform-passward"),
+  passElem = document.querySelector(".password"),
+  confPassElem = document.querySelector(".conform-password"),
   userNotFound = document.querySelector(".user-not-found"),
-  passwardIncorrect = document.querySelector(".passward-incorrect"),
+  passwordIncorrect = document.querySelector(".password-incorrect"),
   alreadyAMember = document.querySelector(".already-a-member"),
-  passwardNotMatch = document.querySelector(".passward-not-match");
+  passwordNotMatch = document.querySelector(".password-not-match");
   
   
   swapBtn.addEventListener("click", e => {
@@ -91,9 +92,9 @@ function renderForm() {
     .forEach((input) => {
       input.addEventListener("keydown", (e) => {
         userNotFound && userNotFound.classList.remove("errorOn");
-        passwardIncorrect && passwardIncorrect.classList.remove("errorOn");
+        passwordIncorrect && passwordIncorrect.classList.remove("errorOn");
         alreadyAMember && alreadyAMember.classList.remove("errorOn");
-        passwardNotMatch && passwardNotMatch.classList.remove("errorOn");
+        passwordNotMatch && passwordNotMatch.classList.remove("errorOn");
       })
     })
 
@@ -106,7 +107,7 @@ function renderForm() {
     if(confPassElem) {
       const confPassValue = confPassElem.value.trim();
       if(confPassValue !== pass) {
-        passwardNotMatch.classList.add('errorOn');
+        passwordNotMatch.classList.add('errorOn');
         confPassElem.value = '';
         return;
       }
@@ -126,8 +127,8 @@ function renderForm() {
         usernameElem.value = '';
         passElem.value = '';
         
-      } else if(data === "PASSWARD_INCORRECT") {
-        passwardIncorrect.classList.add('errorOn');
+      } else if(data === "PASSWORD_INCORRECT") {
+        passwordIncorrect.classList.add('errorOn');
         passElem.value = '';
         
       } else if(data === "ALREADY_A_MEMBER") {
@@ -135,8 +136,8 @@ function renderForm() {
         usernameElem.value = '';
         confPassElem.value = '';  
         passElem.value = '';
-      } 
-
+      }
+      
     } else if(res.success === true) {
       window.location.href = `/success?name=${data.username}`;
     }
@@ -144,3 +145,8 @@ function renderForm() {
 }
 
 renderForm();
+
+const url = new URL(window.location.href);
+const d = url.searchParams.get("d");
+
+if(d) alert("Successfully deleted");

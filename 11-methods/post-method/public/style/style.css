@@ -75,8 +75,28 @@ main .name-container .name {
   padding: 3px 6px;
   color: white;
   background: darkorchid;
+  cursor: pointer;
+  position: relative;
 }
 
 main .name-container.none {
   display: none;
+}
+
+
+main .name-container .name .tooltip {
+  position: absolute;
+  left: -5px;
+  top: 50px;
+  padding: 6px;
+  background: gray;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  display:none;
+}
+
+main .name-container .name .tooltip p {
+  color: white;
 }

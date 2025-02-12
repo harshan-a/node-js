@@ -29,7 +29,7 @@ async function getData(username, pass) {
   }
 }
 
-async function postData(username, passward) {
+async function postData(username, password) {
   try {
     const res = await fetch("/api/signup", {
       method: "POST",
@@ -38,13 +38,35 @@ async function postData(username, passward) {
       },
       body: JSON.stringify({
         username,
-        passward
+        password
       })
     })
 
     if(!res.ok) throw res;
 
     const data = res.json();
+    return data;
+
+  } catch(e) {
+    const err = await e.json();
+    return err;
+  }
+}
+
+export async function changeData(username, password) {
+  try {
+    const res = await fetch(`/api/change/${username}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        password
+      })
+    });
+    if(!res.ok) throw res;
+
+    const data = await res.json();
     return data;
 
   } catch(e) {

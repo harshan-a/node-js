@@ -2,19 +2,19 @@ const fs = require("fs");
 
 const usersDataFilePath = "../../data/usersData.json";
 const usersDataRaw = fs.readFileSync(usersDataFilePath, "utf-8");
-const usersData = JSON.parse(usersDataRaw);
+let usersData = JSON.parse(usersDataRaw);
 
 function getUserData(params) {
-  const { username, passward } = params;
+  const { username, password } = params;
   const user = usersData.find(user => user.username === username);
   if(!user) return "USER_NOT_FOUND";
-  if(user.passward !== passward) return "PASSWARD_INCORRECT";
+  if(user.password !== password) return "PASSWORD_INCORRECT";
   
   return user;
 }
 
 function postUserData(data) {
-  if(data.username && data.passward) {
+  if(data.username && data.password) {
     const user = usersData.find(user => user.username === data.username);
     if(user) {
       return "ALREADY_A_MEMBER";
@@ -28,6 +28,36 @@ function postUserData(data) {
   }
 }
 
+function changeUserPassword(data) {
+  if(data.username && data.password) {
+    let change = false; 
+    usersData.forEach((user, i) => {
+      if(user.username === data.username) {
+        user.password = data.password;
+        change = true;
+      }
+    })
+    if(!change) return "USER_NOT_FOUND";
+    fs.writeFileSync(usersDataFilePath, JSON.stringify(usersData));
+    return data;
+  }
+}
+
+function deleteUser(username) {
+  let change = false;
+  usersData = usersData.filter(user => {
+    if(user.username === username) {
+      change = true;
+      return false;
+    }
+    return true;
+  })
+  if(!change) return "USER_NOT_FOUND";
+  fs.writeFileSync(usersDataFilePath, JSON.stringify(usersData));
+  return "deleted";
+}
+
+
 module.exports = {
-  getUserData, postUserData
+  getUserData, postUserData, changeUserPassword, deleteUser
 }
