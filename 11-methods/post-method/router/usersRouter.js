@@ -1,5 +1,4 @@
 const express = require('express');
-
 const router = express.Router();
 
 const {
@@ -9,6 +8,7 @@ const {
   getUsersReq,
   getUserReq
 } = require("../controllers/usersCon.js");
+const asyncMiddlware = require("../middleware/async.js");
 
 
 // router.post("/", createUserReq);
@@ -17,9 +17,14 @@ const {
 // router.get("/", getUsersReq);
 // router.get("/:userId", getUserReq);
 
-router.route("/").get(getUsersReq).post(createUserReq);
-router.route("/:id").put(changeUserReq).delete(removeUserReq);
-router.route("/:userId").get(getUserReq);
+router.route("/")
+  .get(asyncMiddlware(getUsersReq))
+  .post(asyncMiddlware(createUserReq));
+
+router.route("/:id")
+  .put(asyncMiddlware(changeUserReq))
+  .delete(asyncMiddlware(removeUserReq))
+  .get(asyncMiddlware(getUserReq));
 
 
 module.exports = router;

@@ -1,7 +1,12 @@
 
 async function getData() {
-    const res = await fetch('/api/questions');
-    if(!res.ok) throw res;
+    const res = await fetch('/api/questions', {
+      method: "GET",
+      headers: {
+        "content-type": "application/json"
+      }
+    });
+    if(res.status >= 400) throw await res.json();
     const data = await res.json();
     return data;
 }
@@ -37,5 +42,8 @@ getData()
   };
 
 }).catch((err) => {
-  console.log(err);
+  document.querySelector("body").innerHTML = `
+    <p>Status: ${err.success}</p>
+    <p>Message: ${err.msg}</p>
+  `;
 })

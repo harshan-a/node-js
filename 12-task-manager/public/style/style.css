@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+  color: lightgray;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+body header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+  color: lightgray;
+  position: fixed;
+  left: 0px;
+  right: 0;
+  top: 0;
+  background: white;
+  z-index: 100;
+}
+
+body main {
+  margin-top: 60px;
+}
+
+body main form {
+  border: 1px solid lightgray;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+body main form p {
+  font-size: 23px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  color: lightgray;
+}
+
+body main form input[type="text"] {
+  display: block;
+  width: 250px;
+  height: 35px;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  margin-bottom: 3px;
+  padding-left: 7px;
+  color: lightgray;
+  font-size: 15px;
+}
+
+body main form input[type="text"]::placeholder {
+  color: lightgray;
+}
+
+body main form button {
+  width: 100%;
+  height: 25px;
+  border: none;
+  border-radius: 6px;
+  background-color: lightgray;
+  color: gray;
+  cursor: pointer;
+}
+
+body main form button:hover {
+  opacity: 0.8;
+}
+
+body main form button:active {
+  color: lightgray;
+  background-color: gray;
+}
+
+content .todo-list-wrapper .todo-task{
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 500px;
+  column-gap: 15px;
+}
+
+content .todo-list-wrapper .todo-task span{
+  word-wrap:normal;
+}
+
+content .todo-list-wrapper .todo-task:hover {
+  transform: scale(1.015);
+}
+
+body main form .input-msg {
+  font-size: 11px;
+  margin-bottom: 10px;
+  color: lightgreen;
+}

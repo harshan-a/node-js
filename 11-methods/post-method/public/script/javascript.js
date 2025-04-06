@@ -21,9 +21,13 @@ async function loadUsersData() {
     if(!res.ok) throw res;
 
     const usersData = await res.json();
+    if(usersData.length === 0) {
+      nameConElem.innerHTML = `<span class="name">Users data is empty</span>`;
+      return "EMPTY";
+    }
+
     usersData.forEach(user => {
-      const name = user.userName;
-      const id = user.userId;
+      const {_id: id, userName: name} = user;
       html += `
         <div class="name" data-name-id = "${id}">
           ${name}
@@ -37,14 +41,21 @@ async function loadUsersData() {
     nameConElem.innerHTML = html;
     
   } catch(e) {
-    console.log(e);
     nameConElem.innerHTML = `<span class="name">Can't fetch the data</span>`
+    throw e;
   }
 }
-loadUsersData()
-.then(() => {
-  addNameEvents();
-})
+
+function startLoad() {
+  return loadUsersData()
+  .then((val) => {
+    if(val === "EMPTY") return;
+    addNameEvents();
+  }).catch((err) => {
+    console.log(err);
+  })
+}
+startLoad();
 
 async function start(e) {
   e.preventDefault();
@@ -54,33 +65,23 @@ async function start(e) {
     const value = inputElem.value;
     const res = await postData(value);
     if(!res.ok) throw res;
-    const {userName, userId} = res.data;
-    
-    html += `
-      <div class="name" data-name-id = "${userId}">
-        ${userName}
-        <div class="tooltip tooltip-${userId}">
-          <p class="tooltip-change">Change</p>
-          <p class="tooltip-delete">Delete</p>
-        </div>
-      </div>
-    `;
-    nameConElem.innerHTML = html;
-    inputElem.value = '';
-    addNameEvents();
+
+    await startLoad();
+    inputElem.value = "";
     
   } catch(e) {
     const {msg} = e;
     console.log(e);
     nameConElem.innerHTML = `<span class="name">${msg}</span>`;
-
-    timeout = setTimeout(() => {
-      nameConElem.innerHTML = html;
-    }, 1000);
+    inputElem.value = "";
+    
+    timeout = setTimeout(async () => {
+      await startLoad();
+    }, 2000);
   }
 }
 
-async function postData(name) {
+async function postData(userName) {
   try {
     const res = await fetch('/api/users', {
       method: "POST", 
@@ -88,11 +89,11 @@ async function postData(name) {
         "content-type": "application/json"
       }, 
       body: JSON.stringify({
-        name
+        userName
       })
     });
 
-    if(!res.ok) throw res;
+    if(res.status >= 400) throw res;
     const data = await res.json();
     console.log("load user");
     return data;
@@ -116,11 +117,14 @@ async function changeUserData(id, newName) {
       })
     })
     if(!res.ok) throw res;
-    const data = await res.text();
+    const data = await res.json();
     console.log(data);
+    return data;
 
   } catch(err) {
-    console.log(err);
+    const error = await err.json();
+    console.log(error);
+    return error;
   }
 }
 
@@ -131,11 +135,12 @@ async function deleteUser(id) {
     });
   
     if(!res.ok) throw res;
-    const data = await res.text();
+    const data = await res.json();
     console.log(data);
 
   } catch(err) {
-    console.log(err);
+    const error = await err.json();
+    console.log(error);
   }
 }
 
@@ -178,8 +183,8 @@ function addNameEvents() {
         const value = tooltipInputElem.value.trim();
         if(value) {
           await changeUserData(nameId, value);
+          startLoad();
         }
-        loadUsersData().then(addNameEvents);
       }
       
       tooltipSubmitBtn.addEventListener("click", submitEvent);
@@ -194,9 +199,8 @@ function addNameEvents() {
     tooltipDeleteElem.addEventListener('click', e => {
       deleteUser(nameId)
       .then(() => {
-        return loadUsersData();
-      })
-      .then(addNameEvents);
+        startLoad();
+      });
     })
   })
 }
