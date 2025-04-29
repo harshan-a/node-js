@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require("cors");
 const taskRoute = require("./routers/taskRouter.js");
 const connectDB = require("./db/connect.js");
 require("dotenv").config();
@@ -7,6 +8,9 @@ const notFound = require("./middleware/not-found.js");
 const errorHandlerMiddleware = require('./middleware/errorHandler.js');
 
 // middleware
+// app.use(cors({
+//   origin: 'http://localhost:4000'
+// }));
 app.use(express.static("./public"));
 app.use(express.json());
 

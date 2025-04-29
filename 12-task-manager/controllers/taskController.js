@@ -3,6 +3,8 @@ const CustomError = require("../error/customError.js");
 
 
 const getAllTasks = async (req, res) => {
+  // const origin = req.get("origin");
+  // console.log(origin);
   const tasks = await Task.find({});
   return res.json(tasks);
 }
