@@ -1,6 +1,6 @@
 main .req-collection-section {
   width: 180px;
-  height: 100%;
+  height: calc(100% - 20px); /* this padding */
   padding: 10px;
   box-shadow: 0px 0px 1px gray;
   flex-shrink: 0;
@@ -25,7 +25,7 @@ main .req-collection-section .create-collection {
 
 
 main .req-collection-section .saved-collection-wrapper {
-  height: calc(100% - 60px);
+  height: calc(100% - 65px);
   padding-top: 5px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -50,13 +50,23 @@ main .req-collection-section .saved-collection-wrapper .collection .collection-n
   column-gap: 4px;
   justify-content: space-between;
   /* background:lightgreen; */
+  user-select: none;
 }
 main .req-collection-section .saved-collection-wrapper .collection .collection-name-wrapper .collection-name {
   /* background: lightpink; */
   flex: 1;
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
+  white-space: nowrap; /*deals with sentence's white space*/
+}
+
+main .req-collection-section .saved-collection-wrapper .collection .collection-name-wrapper .collection-name span {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+main .req-collection-section .saved-collection-wrapper .collection .collection-name-wrapper .collection-name span.clicked {
+  transform: rotate(90deg);
 }
 
 .material-symbols-rounded {
@@ -79,13 +89,14 @@ main .req-collection-section .saved-collection-wrapper .collection .collection-n
 }
 
 main .req-collection-section .saved-collection-wrapper .collection .saved-req-wrapper {
-  max-height: 0;
-  transition: max-height 2s ease;
+  max-height: 0px;
+  transition: max-height .2s;
   overflow: hidden;
+  user-select: none; 
   /* background: lightblue; */
 }
 main .req-collection-section .saved-collection-wrapper .collection .saved-req-wrapper.clicked {
-  max-height: fit-content;
+  max-height: 465px;
 }
 
 main .req-collection-section .saved-collection-wrapper .collection .saved-req {

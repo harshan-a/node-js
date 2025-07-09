@@ -70,5 +70,5 @@ input[type="text"] {
 .show-msg-action .show-msg-wrapper .msg {
   color: white;
   font-size: 16px;
-  word-wrap: break-word;
+  word-wrap: break-word; /*deals with single word*/
 }

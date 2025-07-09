@@ -142,17 +142,20 @@ export async function renderCollections() {
   function funcForEachColElem(elem) {
     const {colId, colName} = elem.dataset;
     const collectionNameElem = document.querySelector(`.collection-${colId} .collection-name-wrapper .collection-name`);
+    const collectionNameArrowElem = document.querySelector(`.collection-${colId} .collection-name-wrapper .collection-name span`);
     const savedReqWrapperElem = document.querySelector(`.collection-${colId} .saved-req-wrapper`);
 
     let toggle = false;
     collectionNameElem.addEventListener("click", e => {
       if(toggle) {
         savedReqWrapperElem.classList.remove("clicked");
+        collectionNameArrowElem.classList.remove("clicked");
         toggle = false;
         return;
       } 
       
       savedReqWrapperElem.classList.add("clicked");
+      collectionNameArrowElem.classList.add("clicked");
       toggle = true;
     })
 

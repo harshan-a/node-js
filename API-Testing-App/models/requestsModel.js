@@ -6,6 +6,11 @@ const reqResSchema = new mongoose.Schema({
   status_text: String,
   data: String
 })
+// it is subdocument in requestSchema;
+// but it also add _id property;
+// if want to disable that _id use below code;
+// const reqResSchema = new mongoose.Schema({...Schema}, {_id: false});
+// alters : new mongoose.Schema({..., _id: false});
 
 const requestSchema = new mongoose.Schema({
   req_name: {

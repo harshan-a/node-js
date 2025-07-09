@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 
 const connectDB = require("./db/connectDB.js");
-require("dotenv").config();
 
 const collectionsRouter = require("./routers/collectionsRouter.js");
 const requestsRouter = require("./routers/requestsRouter.js");
