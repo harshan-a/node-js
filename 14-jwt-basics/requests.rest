@@ -1,0 +1,20 @@
+GET http://127.0.0.1:5000/
+
+###
+
+GET http://127.0.0.1:5000/api/v1/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkhhcnNoYW5hIiwiaWF0IjoxNzUyMzM2OTk5LCJleHAiOjE3NTI0MjMzOTl9.tcBWNpLwoYPST4hXpMI93Y2gOZJ4xBaPGw_rjsYt4X4
+
+###
+
+POST http://localhost:5000/api/v1/login
+Content-Type: application/json
+
+{
+  "username": "Harshana",
+  "password": "aa"
+}
+
+
+###
+Post http://localhost:5000/api/v1/login

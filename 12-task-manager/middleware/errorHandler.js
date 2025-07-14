@@ -5,7 +5,7 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     return res.status(err.statusCode).json({msg: err.message, success: err.success});
   }
 
-  res.status(500).json({msg: "Something error, Please try again later"});
+  res.status(500).json({msg: "Something error, Please try again later", err});
 }
 
 module.exports = errorHandlerMiddleware;

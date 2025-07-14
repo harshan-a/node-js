@@ -11,6 +11,18 @@
   }
 
 
+
+  Schema : {
+    *** for schema refer 13-store-api project ***
+
+    String: enum, match, trim, lowercase, uppercase, minlength, maxlength;
+    Number: enum, min, max;
+    Date: min, max, expires;
+
+    All type: required, default, select, validate({validator, message}), get, set, index, unique;
+  }
+
+
   CRUD : {
 
     -- create : {
@@ -20,11 +32,11 @@
     }
 
     -- find : {
-      * await Model.find(conditions:Object, projection:String wit space between) - find multiple docs based on condition(null indicates all docs)
+      * await Model.find(conditions:Object, projection:String wit space between, options:Object) - find multiple docs based on condition(null indicates all docs)
 
-      * await Model.findOne(conditions, projection) - find single doc based on condition.
+      * await Model.findOne(conditions, projection, options) - find single doc based on condition.
 
-      * await Model.findById(id, projection) - same as findOne(), but it use only id property to find specific doc
+      * await Model.findById(id, projection, options) - same as findOne(), but it use only id property to find specific doc
     },
 
     -- update : {
@@ -43,7 +55,7 @@
     }
 
     -- delete : {
-      * await Model.findOneAndDelete(conditions) - find single doc and delete the data
+      * await Model.findOneAndDelete(conditions, options) - find single doc and delete the data
 
       * await Model.findByIdAndDelete(id) - same as findOneAndDelete(), but it use only id property to find
 
@@ -54,6 +66,35 @@
       Note: deleteOne and deleteMany return only the acknowledgement object not the document itself, whereas the findOneAndDelete and findByIdAndDelete will return the actual document
     }
 
+    
+    create - params are (data, options)
+    find - params are (filter, projection, options)
+    update - params are (filter, update_data, options)
+    delete - params are (filter, options)
+  }
+
+
+  options {
+    find() - 
+      lean: Boolean, 
+      populate: Object{path: "<field>"},
+      strict: Boolean,
+      limit: Number,
+      skip: Number,
+      sort: String|Object
+      select: String|Object
+
+    findOneAndUpdate() -
+      lean: Boolean,
+      populate: Object{path: "<field>"},
+      strict: Boolean,
+      sort: String|Object,
+      fields: Object|String, **Only this method has fields-property to select fields, remaining uses select-property**
+      upsert: Boolean,
+      new: Boolean,
+      runValidators: Boolean
+
+    findOneAndDelete() - lean, populate, strict, sort, select
   }
 
   params and query : {

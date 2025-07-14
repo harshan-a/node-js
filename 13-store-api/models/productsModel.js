@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const hsnCodeRegex = /(\d{2})\s?(\d{2})\s?(\d{2})\s?(\d{2})\s?(\d{2})/;
+const hsnCodeRegex = /(\d{2})[-\.\s]?(\d{2})[-\.\s]?(\d{2})[-\.\s]?(\d{2})[-\.\s]?(\d{2})/;
 
 // const productSchema = new mongoose.Schema({
 //   name: {
