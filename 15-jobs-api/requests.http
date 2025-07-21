@@ -1,0 +1,62 @@
+POST https://jobs-api-shmj.onrender.com/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "example2@gmail.com",
+  "password": "app"
+}
+
+###
+POST https://jobs-api-shmj.onrender.com/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "name": "Harshan",
+  "email": "example13@gmail.com",
+  "password": "app"
+}
+
+
+
+// Get all jobs
+### 
+GET https://jobs-api-shmj.onrender.com/api/v1/jobs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODdlNTMwMWMyMjQ5YjI0YjI2YmNlNjkiLCJ1c2VyTmFtZSI6IkhhcnNoYW4iLCJpYXQiOjE3NTMxMDkyNTAsImV4cCI6MTc1MzE5NTY1MH0.45aeZLJQ_tm4tuMw-ZiEOtAZDHD61gHImzonhnX8XBc
+
+
+// Create job
+###
+POST https://jobs-api-shmj.onrender.com/api/v1/jobs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODdlNTMwMWMyMjQ5YjI0YjI2YmNlNjkiLCJ1c2VyTmFtZSI6IkhhcnNoYW4iLCJpYXQiOjE3NTMxMDkyNTAsImV4cCI6MTc1MzE5NTY1MH0.45aeZLJQ_tm4tuMw-ZiEOtAZDHD61gHImzonhnX8XBc
+
+
+{
+  "company": "snap chat",
+  "position": "UI/UX designer"
+}
+
+
+// Get job
+###
+GET https://jobs-api-shmj.onrender.com/api/v1/jobs/687e534cc2249b24b26bce6c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODdlNTMwMWMyMjQ5YjI0YjI2YmNlNjkiLCJ1c2VyTmFtZSI6IkhhcnNoYW4iLCJpYXQiOjE3NTMxMDkyNTAsImV4cCI6MTc1MzE5NTY1MH0.45aeZLJQ_tm4tuMw-ZiEOtAZDHD61gHImzonhnX8XBc
+
+
+// Update job
+###
+PATCH https://jobs-api-shmj.onrender.com/api/v1/jobs/68791261b8a7aa5db9c870e8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODdlNTMwMWMyMjQ5YjI0YjI2YmNlNjkiLCJ1c2VyTmFtZSI6IkhhcnNoYW4iLCJpYXQiOjE3NTMxMDkyNTAsImV4cCI6MTc1MzE5NTY1MH0.45aeZLJQ_tm4tuMw-ZiEOtAZDHD61gHImzonhnX8XBc
+
+
+{
+  "company": "snap_chat",
+  "position": "UI/UX designer"
+}
+
+
+// Delete job
+###
+DELETE https://jobs-api-shmj.onrender.com/api/v1/jobs/687910a48e42a5abd5111ccc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODdlNTMwMWMyMjQ5YjI0YjI2YmNlNjkiLCJ1c2VyTmFtZSI6IkhhcnNoYW4iLCJpYXQiOjE3NTMxMDkyNTAsImV4cCI6MTc1MzE5NTY1MH0.45aeZLJQ_tm4tuMw-ZiEOtAZDHD61gHImzonhnX8XBc

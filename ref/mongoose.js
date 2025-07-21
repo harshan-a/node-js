@@ -16,10 +16,12 @@
     *** for schema refer 13-store-api project ***
 
     String: enum, match, trim, lowercase, uppercase, minlength, maxlength;
+
     Number: enum, min, max;
+
     Date: min, max, expires;
 
-    All type: required, default, select, validate({validator, message}), get, set, index, unique;
+    All type: type, required, default, select, validate({validator, message}), get, set, index, unique;
   }
 
 
@@ -111,5 +113,18 @@
     }
   }
 
+
+  mongoose middleware : {
+    schema.pre("action_name", call_back);
+    schema.post("action_name", call_back);
+  }
+
+  mongoose instance method : {
+    - schema.methods.method_name = function() {}
+    - schema.method("method_name", function() {});
+    - schema.method({
+      method_name : function() {}
+    })
+  }
   
 */

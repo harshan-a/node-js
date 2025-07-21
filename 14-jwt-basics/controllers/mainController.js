@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const users = require("../data/users.json");
 const {
