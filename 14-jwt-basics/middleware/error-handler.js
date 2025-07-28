@@ -3,7 +3,7 @@ const {StatusCodes} = require("http-status-codes");
 
 
 const errorHandlerMiddleware = (err, req, res, next) => {
-  // console.log("error");
+  console.log(err);
   if(err instanceof CustomError) {
     return res.status(err.statusCode).json({msg: err.message});
   }

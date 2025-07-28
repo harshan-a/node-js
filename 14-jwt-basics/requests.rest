@@ -1,4 +1,10 @@
-GET http://127.0.0.1:5000/
+POST http://127.0.0.1:5000/api/v1/register
+Content-Type: application/json
+
+{
+  "username": "harshaaa",
+  "password": "app"
+}
 
 ###
 
@@ -11,10 +17,19 @@ POST http://localhost:5000/api/v1/login
 Content-Type: application/json
 
 {
-  "username": "Harshana",
-  "password": "aa"
+  "username": "harsha",
+  "password": "app"
 }
 
 
 ###
-Post http://localhost:5000/api/v1/login
+
+POST http://localhost:5000/api/v1/refresh-token
+Content-Type: application/json
+Cookie: refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg2MWYyYzAyYzcwNTM4YTRiNTZmMzIiLCJ1c2VyTmFtZSI6ImhhcnNoYWFhIiwiaWF0IjoxNzUzNjI0NDY2fQ.iDXQ2JnCjgMEG4EwZVdFbyCj1kd1c3UOKozDrOZ_8dw; Max-Age=604800; Path=/; Expires=Sun, 03 Aug 2025 13:54:26 GMT; HttpOnly; Secure; SameSite=Strict
+
+
+
+
+###
+DELETE  http://localhost:5000/api/v1/users

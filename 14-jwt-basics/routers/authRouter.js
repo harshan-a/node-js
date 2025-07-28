@@ -3,17 +3,18 @@ const router = express.Router();
 
 const {
   login, 
-  dashboard, 
-  register
-} = require("../controllers/mainController.js");
+  register,
+  refreshToken,
+  logout,
+} = require("../controllers/authController.js");
 
-const authenticationMiddleware = require("../middleware/auth.js");
 
 // router.post("/login", login);
 // router.get("/dashboard", dashboard);
 
 router.route("/login").post(login);
 router.route("/register").post(register);
-router.route("/dashboard").get(authenticationMiddleware, dashboard);
+router.route("/refresh-token").get(refreshToken);
+router.route("/logout").delete(logout);
 
 module.exports = router;

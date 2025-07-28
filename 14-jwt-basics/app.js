@@ -1,41 +1,74 @@
 // console.log("Hello, World!!!");
 require("dotenv").config();
 
-const 
-  express = require("express"),
-  cors = require("cors"),
+// import dependencies :
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const YAML = require("yamljs");
+const swaggerUI = require("swagger-ui-express");
+const cors = require("cors");
+const helmet = require("helmet");
+const { xss } = require("express-xss-sanitizer");
+const rateLimiter = require("express-rate-limit");
 
-  app = express(),
-  PORT = process.env.PORT || 5000,
+// import db, errorHandler, notFound :
+const connectDB = require("./db/connect.js");
+const errorHandlerMiddle = require("./middleware/error-handler.js");
+const notFound = require("./middleware/not-found.js");
 
-  connectDB = require("./db/connect.js");
-  errorHandlerMiddle = require("./middleware/error-handler.js"),
-  notFound = require("./middleware/not-found.js"),
-  // const CustomError = require("./errors/customError.js");
-  mainRouter = require("./routers/mainRouter.js");
+// import routers and middlerwares:
+const authRouter = require("./routers/authRouter.js");
+const userRouter = require("./routers/userRouter.js");
+const authenticationMiddleware = require("./middleware/auth.js");
 
 
-// middleware
+
+// initialize app and port :
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// common middleware :
 app.use(express.static("./public"));
 app.use(express.json());
+app.use(cookieParser());
+
+// security middleware :
 app.use(cors({
   origin: "http://localhost:4000/"
 }));
+app.use(helmet());
+app.use(xss());
 
 
+
+// routers
+app.use(
+  "/api/v1/auth", 
+  rateLimiter({
+    windowMs: 1000 * 60 * 15,
+    max: 10
+  }),
+  authRouter
+);
+app.use(
+  "/api/v1/user",
+  authenticationMiddleware, 
+  userRouter
+);
 // app.get("/", (req, res) => {
 //   // console.log(req.get("host"));
 //   // throw new CustomError({msg: "hleo", statusCode: 400, success: false});
 //   res.send("hello");
 // })
 
-// Routers
-app.use("/api/v1/", mainRouter);
+// documentation route :
+const swaggerDoc = YAML.load("./swagger.yaml");
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
-
-// Error Handling Middlewares
+// error handling routes :
 app.use(notFound);
 app.use(errorHandlerMiddle);
+
 
 
 // start server
