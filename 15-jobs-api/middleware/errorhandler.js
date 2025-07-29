@@ -15,8 +15,8 @@ const errorHandlerMiddlerware = (err, req, res, next) => {
   // }
 
   if(err.code && err.code === 11000) {
-    const field = Object.keys(err.keyValues);
-    customError.msg = `Duplication occur on${field}`;
+    const field = Object.keys(err.keyValue);
+    customError.msg = `Duplication occur on ${field}`;
     customError.statusCode = StatusCodes.BAD_REQUEST;
   }
 

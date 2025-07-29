@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     maxlength: [20, "Usename should not exceed 20 char"],
     minlength: [3, "Username should have more then 3 char"],
-    unique: [true, "Username already taken"],
+    unique: true,
     index: true,
     select: true,
     // uppercase: true,
